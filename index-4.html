@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#174b37"><title>Secret Santa 2026</title>
+<style>
+:root{--green:#174b37;--gold:#c49a4a;--ink:#24342c;--muted:#718078;--paper:#fffefa}*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#f5f3eb,#e8eee7);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);min-height:100vh;padding:22px 13px}.wrap{max-width:650px;margin:auto}.card{background:var(--paper);border:1px solid #e4e5db;border-radius:24px;padding:23px;box-shadow:0 16px 50px #183d2a14}.top{text-align:center;margin-bottom:20px}.eyebrow{color:#997438;text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:800}.tree{font-size:34px;margin:8px}.title{font-family:Georgia,serif;font-size:34px;color:var(--green);margin:4px 0}.sub{color:var(--muted);font-size:14px;line-height:1.5}.list{display:grid;gap:9px;margin-top:20px}.person{width:100%;border:1px solid #e1e5dc;background:white;border-radius:13px;padding:14px 15px;display:flex;align-items:center;justify-content:space-between;text-align:left;font-size:16px;color:var(--ink);cursor:pointer}.person:active{background:#f7f4eb}.arrow{color:#9a7b42;font-size:20px}.note{text-align:center;color:var(--muted);font-size:12px;margin:19px 4px 0}.status{display:none;padding:12px;border-radius:12px;margin-top:15px;font-size:14px}.status.show{display:block}.status.error{background:#fff0ed;color:#a33}.status.ok{background:#eaf5ec;color:#24613b}.shade{position:fixed;inset:0;background:#10271fd1;display:none;place-items:center;padding:18px;z-index:5}.shade.show{display:grid}.dialog{max-width:390px;width:100%;background:white;border-radius:22px;padding:24px;text-align:center}.dialog h2{font-family:Georgia,serif;color:var(--green);font-size:26px}.chosen{font-weight:800;font-size:22px;margin:15px}.actions{display:flex;gap:10px}.btn{border:0;border-radius:12px;padding:13px 15px;font-weight:700;cursor:pointer;flex:1}.primary{background:var(--green);color:white}.secondary{background:#edf0ea;color:var(--ink)}.btn:disabled{opacity:.55}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.stat{background:#f1f5ef;padding:15px;border-radius:14px}.num{font-size:29px;font-weight:800;color:var(--green)}.label{font-size:12px;color:var(--muted)}.bar{height:9px;background:#e8ede6;border-radius:20px;overflow:hidden}.fill{height:100%;background:#2e8053;width:0}.section{margin-top:22px}.section h2{font-size:16px;color:var(--green)}.row{display:flex;align-items:center;justify-content:space-between;padding:11px 2px;border-bottom:1px solid #edf0eb;gap:8px}.pill{font-size:11px;border-radius:99px;padding:5px 9px;background:#eaf4ec;color:#286342}.pill.wait{background:#f4f0e7;color:#866b37}.small{border:0;background:#edf1eb;color:#415247;border-radius:9px;padding:7px 10px;font-size:12px}.hidden{display:none}.errorbox{padding:13px;border-radius:12px;background:#fff0ed;color:#9b3024;white-space:pre-wrap}.refresh{float:right;border:1px solid #dce4da;background:white;padding:8px 12px;border-radius:10px}
+
+/* Christmas 2026 visual refresh */
+body{
+  background:
+    radial-gradient(ellipse at 12% 8%,rgba(255,255,255,.88),transparent 32%),
+    radial-gradient(ellipse at 88% 16%,rgba(196,154,74,.13),transparent 30%),
+    linear-gradient(145deg,#f7f2e8 0%,#e5eee6 48%,#f4e9e3 100%);
+  background-attachment:fixed;
+}
+body:before,body:after{
+  content:"";position:fixed;pointer-events:none;z-index:0;border-radius:50%;
+  filter:blur(2px);opacity:.45
+}
+body:before{width:260px;height:260px;top:-90px;left:-90px;background:radial-gradient(circle,#fff8df,transparent 70%)}
+body:after{width:300px;height:300px;right:-120px;bottom:-100px;background:radial-gradient(circle,#d5e7d8,transparent 70%)}
+.wrap{position:relative;z-index:1}
+.card{
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 24px 70px rgba(28,62,43,.12),0 3px 12px rgba(28,62,43,.05);
+  backdrop-filter:blur(8px);animation:cardArrive .8s cubic-bezier(.2,.8,.2,1) both
+}
+.top{position:relative;padding:12px 4px 18px}
+.top:before{
+  content:"";position:absolute;left:8%;right:8%;top:-6px;height:3px;border-radius:50%;
+  background:linear-gradient(90deg,transparent,#c49a4a,#e8d8a8,#c49a4a,transparent);
+  box-shadow:0 0 14px rgba(196,154,74,.65)
+}
+.eyebrow{color:#a17a37;text-shadow:0 1px 0 #fff}
+.tree{font-size:42px;filter:drop-shadow(0 5px 5px rgba(26,76,51,.16));animation:treeBob 4s ease-in-out infinite}
+.title{font-size:clamp(34px,8vw,44px);letter-spacing:-.025em;text-shadow:0 2px 0 #fff,0 8px 22px rgba(23,75,55,.08)}
+.sub{line-height:1.65}
+.person{
+  border:1px solid #e8e5d9;border-radius:16px;padding:16px 17px;
+  box-shadow:0 3px 10px rgba(34,63,45,.035);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease;
+  animation:personIn .45s both
+}
+.person:nth-child(2n){animation-delay:.04s}
+.person:nth-child(3n){animation-delay:.08s}
+.person:hover{transform:translateY(-2px);border-color:#d4bd83;box-shadow:0 9px 22px rgba(34,63,45,.09);background:#fffefa}
+.person:active{transform:scale(.985);background:#f8f4e9}
+.arrow{color:#b18a45}
+.btn,.small,.refresh{transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+.btn:active,.small:active,.refresh:active{transform:scale(.97)}
+.primary{background:linear-gradient(135deg,#1d6045,#123e2d);box-shadow:0 5px 14px rgba(23,75,55,.2)}
+.secondary{background:#f2f0e8}
+.shade{backdrop-filter:blur(7px);animation:fadeIn .2s ease}
+.dialog{box-shadow:0 24px 90px rgba(0,0,0,.25);animation:dialogPop .28s cubic-bezier(.2,.85,.25,1)}
+.dialog>div:first-child{animation:giftWiggle 2.8s ease-in-out infinite}
+.stat{background:linear-gradient(145deg,#f5f8f2,#eaf1e8);border:1px solid #e2eadf}
+.num{font-variant-numeric:tabular-nums}
+.fill{background:linear-gradient(90deg,#b58a3e,#dfc47e,#2e8053);transition:width .65s cubic-bezier(.2,.8,.2,1)}
+.section h2{letter-spacing:.01em}
+.row{padding:13px 3px}
+.pill{font-weight:700;letter-spacing:.02em}
+.small{font-weight:700}
+.note{line-height:1.55}
+#adminPanel{animation:fadeIn .45s ease}
+.reveal-lock{
+  margin-top:12px;padding:20px 15px;border:1px solid #e9dfc6;border-radius:17px;
+  background:linear-gradient(145deg,#fffaf0,#f5f1e7);text-align:center;
+  box-shadow:inset 0 1px 0 #fff,0 7px 20px rgba(91,70,34,.05)
+}
+.reveal-lock .lock-icon{font-size:30px;margin-bottom:7px;animation:lockGlow 2.5s ease-in-out infinite}
+.reveal-lock strong{display:block;color:#715a2f;font-family:Georgia,serif;font-size:19px}
+.reveal-lock p{color:#81765f;font-size:13px;line-height:1.5;margin:8px 0 12px}
+.reveal-lock .threshold{display:inline-block;border-radius:99px;padding:7px 12px;background:#eee5d2;color:#765d2d;font-size:12px;font-weight:800}
+.snow-layer{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+.snowflake{position:absolute;top:-24px;color:#fff;text-shadow:0 0 7px rgba(130,154,139,.55);opacity:.75;
+  animation:snowFall linear infinite;will-change:transform}
+.snowflake:nth-child(3n){color:#e5d6ad;opacity:.65}
+.snowflake:nth-child(4n){font-size:7px;opacity:.5}
+@keyframes snowFall{to{transform:translate3d(var(--drift,35px),110vh,0) rotate(360deg)}}
+@keyframes cardArrive{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes personIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes dialogPop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes treeBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes giftWiggle{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-8deg)}96%{transform:rotate(8deg)}}
+@keyframes lockGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(196,154,74,0))}50%{filter:drop-shadow(0 0 9px rgba(196,154,74,.45))}}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+  .snow-layer{display:none}
+}
+
+</style></head><body><div class="snow-layer" id="snowLayer" aria-hidden="true"></div><main class="wrap"><section class="card"><header class="top"><div class="eyebrow">A little holiday magic</div><div class="tree">🎄</div><h1 class="title" id="heading">Secret Santa 2026</h1><p class="sub" id="intro">Choose one name from the list below. Tap a name to review your choice before confirming.</p></header><div id="error" class="errorbox hidden"></div><div id="list" class="list">Connecting…</div><div id="status" class="status" role="status"></div><div id="adminPanel" class="hidden"><div class="stats"><div class="stat"><div id="selectedCount" class="num">0</div><div class="label">Names selected</div></div><div class="stat"><div id="remainingCount" class="num">0</div><div class="label">Still pending</div></div></div><div class="bar"><div id="fill" class="fill"></div></div><div class="section" id="selectedSection"><h2>Selected names</h2><div id="revealGate" class="reveal-lock"><div class="lock-icon">🔒</div><strong>Selected names are still a secret</strong><p>The selected names will be revealed here once 10 recipients have been selected.</p><span class="threshold" id="revealProgress">0 of 10 selected</span></div><div id="taken" class="hidden"></div></div><div class="section"><h2>Still pending</h2><div id="pending"></div></div><p class="note">Only recipient status is stored. No giver identities or assignments are recorded.</p></div><p class="note" id="publicNote">All names remain visible. Selection status is private and is not shown to participants.</p></section></main>
+<div id="shade" class="shade"><div class="dialog"><div style="font-size:30px">🎁</div><h2>Confirm your choice</h2><p class="sub">You are about to select:</p><div id="chosen" class="chosen"></div><p class="sub">Once confirmed, please treat your choice as final.</p><div class="actions"><button id="cancel" class="btn secondary">Go back</button><button id="confirm" class="btn primary">Confirm</button></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+
+function createSnow(){
+  const layer=document.getElementById('snowLayer');
+  if(!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const glyphs=['❄','✦','❅','·'];
+  for(let i=0;i<26;i++){
+    const f=document.createElement('span');f.className='snowflake';
+    f.textContent=glyphs[i%glyphs.length];
+    f.style.left=(Math.random()*100)+'%';
+    f.style.animationDuration=(12+Math.random()*18)+'s';
+    f.style.animationDelay=(-Math.random()*25)+'s';
+    f.style.fontSize=(7+Math.random()*11)+'px';
+    f.style.setProperty('--drift',((Math.random()*100)-50)+'px');
+    layer.appendChild(f);
+  }
+}
+createSnow();
+
+const SUPABASE_URL='https://peugxsonlteigyhvgsob.supabase.co';
+const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBldWd4c29ubHRlaWd5aHZnc29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ4ODYzODksImV4cCI6MjExMDQ2MjM4OX0.aZ2ChFIVBXbRgHdM4DFQ3DRhDYGpkmu4p9yTXFExO7w';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{persistSession:false}});
+const adminMode=new URLSearchParams(location.search).has('admin');
+const adminToken=decodeURIComponent(location.hash.slice(1));
+const $=s=>document.querySelector(s);let chosen=null,people=[];
+function showError(t){$('#error').textContent=t;$('#error').classList.remove('hidden')}
+function status(t,type){$('#status').textContent=t;$('#status').className='status show '+type}
+async function loadPublic(){const {data,error}=await sb.rpc('santa_public_list');if(error)throw error;people=data||[];$('#list').innerHTML='';people.forEach(p=>{const b=document.createElement('button');b.className='person';const n=document.createElement('span');n.textContent=p.name;const a=document.createElement('span');a.className='arrow';a.textContent='›';b.append(n,a);b.onclick=()=>{chosen=p;$('#chosen').textContent=p.name;$('#shade').classList.add('show')};$('#list').append(b)});if(!people.length)$('#list').textContent='No names found.'}
+async function confirmChoice(){if(!chosen)return;$('#confirm').disabled=true;$('#confirm').textContent='Submitting…';try{const {error}=await sb.rpc('santa_claim_name',{p_recipient_id:chosen.id});if(error)throw error;$('#shade').classList.remove('show');status('Thank you! Your choice has been submitted. Please do not submit another name.', 'ok');chosen=null}catch(e){status('We could not submit your choice. Please try again or contact the organizer.','error')}finally{$('#confirm').disabled=false;$('#confirm').textContent='Confirm'}}
+async function loadAdmin(){if(!adminToken){showError('This is the private admin page. Open the private admin link supplied to the organizer.');$('#list').classList.add('hidden');return}$('#heading').textContent='Organizer Dashboard';$('#intro').textContent='Private overview of which recipient names have been selected. No giver information is collected.';$('#list').classList.add('hidden');$('#publicNote').classList.add('hidden');const {data,error}=await sb.rpc('santa_admin_list',{p_admin_token:adminToken});if(error)throw error;people=data||[];const selected=people.filter(p=>p.selected),pending=people.filter(p=>!p.selected);$('#selectedCount').textContent=selected.length;$('#remainingCount').textContent=pending.length;$('#fill').style.width=(people.length?selected.length/people.length*100:0)+'%';const render=(arr,target,isSelected)=>{const el=$(target);el.innerHTML='';if(!arr.length){el.textContent=isSelected?'No names selected yet.':'No names pending.';return}arr.forEach(p=>{const row=document.createElement('div');row.className='row';const n=document.createElement('span');n.textContent=p.name;const badge=document.createElement('span');badge.className='pill '+(isSelected?'':'wait');badge.textContent=isSelected?'Selected':'Pending';row.append(n,badge);const btn=document.createElement('button');btn.className='small';btn.textContent=isSelected?'Undo':'Mark selected';btn.onclick=()=>changeStatus(p.id,!isSelected);row.append(btn);el.append(row)})};if(selected.length>=10){
+  $('#revealGate').classList.add('hidden');
+  $('#taken').classList.remove('hidden');
+  render(selected,'#taken',true);
+}else{
+  $('#revealGate').classList.remove('hidden');
+  $('#taken').classList.add('hidden');
+  $('#taken').innerHTML='';
+  $('#revealProgress').textContent=selected.length+' of 10 selected · '+(10-selected.length)+' more to reveal';
+}
+render(pending,'#pending',false);$('#adminPanel').classList.remove('hidden')}
+async function changeStatus(id,selected){if(!confirm(selected?'Mark this name as selected?':'Undo this selection?'))return;const {error}=await sb.rpc('santa_admin_set',{p_admin_token:adminToken,p_recipient_id:id,p_selected:selected});if(error){showError('Could not update the selection.');return}await loadAdmin()}
+$('#cancel').onclick=()=>$('#shade').classList.remove('show');$('#confirm').onclick=confirmChoice;
+(async()=>{try{if(adminMode)await loadAdmin();else await loadPublic()}catch(e){showError('Could not connect to the Secret Santa database. Check the setup steps and refresh.')}})();
+</script></body></html>
